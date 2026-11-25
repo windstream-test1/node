@@ -43,6 +43,12 @@ The following special commands are supported by all REPL instances:
   further input or processing of that expression.
 * `.clear`: Resets the REPL `context` to an empty object and clears any
   multi-line expression being input.
+* `.clearhistory`: Clears the in-memory history and, when persistent history is
+  enabled, empties the history file. The command itself is also removed from
+  history. A new REPL session using the same history file starts with empty
+  history, unless more commands are entered after clearing it. No confirmation
+  is required. If the file cannot be cleared, an error is displayed; in-memory
+  history is still cleared.
 * `.exit`: Close the I/O stream, causing the REPL to exit.
 * `.help`: Show this list of special commands.
 * `.save`: Save the current REPL session to a file:
@@ -51,6 +57,12 @@ The following special commands are supported by all REPL instances:
   `> .load ./file/to/load.js`
 * `.editor`: Enter editor mode (<kbd>Ctrl</kbd>+<kbd>D</kbd> to
   finish, <kbd>Ctrl</kbd>+<kbd>C</kbd> to cancel).
+
+```console
+> .clearhistory
+History cleared
+>
+```
 
 ```console
 > .editor
